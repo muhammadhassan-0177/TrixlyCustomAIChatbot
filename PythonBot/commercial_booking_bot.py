@@ -16,6 +16,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import ElementClickInterceptedException
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -144,13 +145,13 @@ def selecting_date_shifting_url(driver, dayinput, dateinput, timeinput):
 
 def selecting_check_box_by_value(driver, checkboxvalue):
     try:
-        checkboxvalue_Int = WebDriverWait(driver, 400).until(
+        checkboxvalue_Int = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[4]/div[2]/div[1]/input"))
         )
-        checkboxvalue_ext = WebDriverWait(driver, 400).until(
+        checkboxvalue_ext = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[4]/div[2]/div[2]/input"))
         )
-        checkboxvalue_oth = WebDriverWait(driver, 400).until(
+        checkboxvalue_oth = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[4]/div[2]/div[3]/input"))
         )
 
@@ -172,7 +173,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            FirstName = WebDriverWait(driver, 400).until(
+            FirstName = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field2"))
             )
             action_chains.click(FirstName).send_keys(First_Name).perform()
@@ -181,7 +182,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            last_name_input = WebDriverWait(driver, 400).until(
+            last_name_input = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field3"))
             )
             action_chains.click(last_name_input).send_keys(Last_Name).perform()
@@ -197,7 +198,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
         
-            email_tag = WebDriverWait(driver, 400).until(
+            email_tag = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field5"))
             )
 
@@ -207,7 +208,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
             print("Error entering Email address")
         
         try:
-            m1 =  WebDriverWait(driver, 400).until(
+            m1 =  WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field6"))
             )
             action_chains.click(m1).send_keys(Mobile_Number).perform()
@@ -218,7 +219,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            m2 =  WebDriverWait(driver, 400).until(
+            m2 =  WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field7"))
             )
             action_chains.click(m2).send_keys(Other_Phone_Number).perform()
@@ -228,7 +229,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            addrr = WebDriverWait(driver, 400).until(
+            addrr = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field8"))
             )
             action_chains.click(addrr).send_keys(Address).perform()
@@ -239,7 +240,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            city_addrr = WebDriverWait(driver, 400).until(
+            city_addrr = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field9"))
             )
             action_chains.click(city_addrr).send_keys(City).perform()
@@ -250,10 +251,10 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            kansas_radio_button = WebDriverWait(driver, 400).until(
+            kansas_radio_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field10-4"))
             )
-            missouri_radio_button = WebDriverWait(driver, 400).until(
+            missouri_radio_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field10-5"))
             )
 
@@ -268,7 +269,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            zipcode_input = WebDriverWait(driver, 400).until(
+            zipcode_input = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field11"))
             )
             action_chains.click(zipcode_input).send_keys(ZipCode).perform()
@@ -278,7 +279,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            challenge_select_element = WebDriverWait(driver, 400).until(
+            challenge_select_element = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field12"))
             )
             challenge_select = Select(challenge_select_element)
@@ -291,7 +292,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
         try:
 
-            project_description_textarea = WebDriverWait(driver, 400).until(
+            project_description_textarea = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "field13"))
             )
             action_chains.click(project_description_textarea).send_keys(ProjectDescription).perform()
@@ -300,7 +301,7 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
             print("Error entering Project Description")
 
         try:
-            submit_button = WebDriverWait(driver, 400).until(
+            submit_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.ID, "submitButton"))
             )
             action_chains.click(submit_button).perform()
