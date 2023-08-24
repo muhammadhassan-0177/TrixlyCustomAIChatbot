@@ -308,32 +308,8 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
             WebDriverWait(driver, 15).until(EC.url_changes(driver.current_url))  # Wait for URL change
             print("Button Click Successful. URL changed:", driver.current_url)
-        except:
-            print("Button Click Failed")
-
+        except Exception as e:
+            print(driver.current_url)
+            print("Button Click Failed", e)
     except:
         print("Driver not found")
-
-
-First_Name = "John"
-Last_Name = "Testing 2"
-checkbox_value_to_select = "Exterior Painting"
-Email_address = "hasanzariqbal@gmail.com"
-Mobile_Number = "03415636012"
-Other_Phone_Number = "03035973419"
-Address = "123 Main St"
-City = "New York"
-State = "Kansas"
-ZipCode = "12345"
-HeardAbout = "Google"
-ProjectDescription = "This is a test project description."
-
-
-# if __name__ == "__main__":
-#     drivers = link_graper_function()
-#     day = "Thu"
-#     date = "2023-08-17"
-#     time = "11:30 AM"
-#     booking_url = selecting_date_shifting_url(drivers, day, date, time)
-#     click_submit_button(booking_url, First_Name, Last_Name, checkbox_value_to_select, Email_address, Mobile_Number, Other_Phone_Number, Address, City, State, ZipCode, HeardAbout, ProjectDescription)
-
