@@ -312,5 +312,5 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
         except ElementClickInterceptedException as e:
             print(driver.current_url)
             print("Button Click Failed:", e)
-    except:
-        print("Driver not found")
+    except ElementClickInterceptedException as e:
+        print("Driver not found", e)
