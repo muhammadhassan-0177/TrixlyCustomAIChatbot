@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import ElementClickInterceptedException
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -410,8 +411,9 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
             WebDriverWait(driver, 15).until(EC.url_changes(driver.current_url))  # Wait for URL change
             print("Button Click Successful. URL changed:", driver.current_url)
-        except Exception as e:
-            print("Button Click Failed", e)
+        except ElementClickInterceptedException as e:
+            print(driver.current_url)
+            print("Button Click Failed:", e)
 
     except Exception as e:
         print("Driver not found", e)
