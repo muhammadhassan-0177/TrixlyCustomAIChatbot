@@ -410,40 +410,8 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
             WebDriverWait(driver, 15).until(EC.url_changes(driver.current_url))  # Wait for URL change
             print("Button Click Successful. URL changed:", driver.current_url)
-        except:
-            print(driver.current_url)
-            print("Button Click Failed")
+        except Exception as e:
+            print("Button Click Failed", e)
 
     except Exception as e:
         print("Driver not found", e)
-
-
-
-
-# if __name__ == "__main__":
-#     drivers = link_graper_function()
-#     Service = "Small Interior (3-4 rooms) Consultation"
-#     state = "Kansas"
-#     FirstName = "John"
-#     LastNem = "Residential Testing"
-#     spouse = "John's Spous"
-#     Spouse_num = "03035973419"
-#     spouse_addr = "hasanzafariqbal@gmail.com"
-#     service_desired = "Wood Repair"
-#     email_add = "hasanzafariqbal@gmail.com"
-#     cell_phone = "03035973419"
-#     home_phone = "03035973419"
-#     Str_addres = "123 New York"
-#     city = "NYC"
-#     state = "Kansas"
-#     zipcode = "13213"
-#     channel = "Google"
-#     Description = "This is description for residential booking"
-#     cp_code = "1322"
-#     service_mod = page_clicking_module(drivers, Service)
-#     citydriver = selectingCity(service_mod, state)  
-#     date_source = selecting_date_shifting_url(citydriver, day, date, time)
-#     RS = Residential_Form(date_source)
-
-
-
