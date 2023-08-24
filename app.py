@@ -78,15 +78,12 @@ def chatbot_response():
         prompt = data.get('prompt')
         text = generate_response(prompt, fine_tuned_model=fine_tuned_model)
         print(text)
-        # Remove ### and $$$ elements
-        text = text.replace("###", "").replace("$$$", "").replace("$$","")
-
+        text = text.replace("###", "").replace("$$$", "").replace("$$", "").replace("##", "").replace("?", "")
         # Remove extra whitespace and newline characters
         text = re.sub(r'\n+', '\n', text).strip()
         response = text
         print(response)
         return jsonify({'response': response})
-
 
 
 
