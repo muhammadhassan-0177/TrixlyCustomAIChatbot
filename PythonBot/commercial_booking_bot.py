@@ -309,8 +309,8 @@ def click_submit_button(driver, First_Name, Last_Name, checkbox_value_to_select,
 
             WebDriverWait(driver, 15).until(EC.url_changes(driver.current_url))  # Wait for URL change
             print("Button Click Successful. URL changed:", driver.current_url)
-        except Exception as e:
+        except ElementClickInterceptedException as e:
             print(driver.current_url)
-            print("Button Click Failed", e)
+            print("Button Click Failed:", e)
     except:
         print("Driver not found")
