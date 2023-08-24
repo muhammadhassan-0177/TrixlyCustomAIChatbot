@@ -1,0 +1,43 @@
+        function convertDataToButtons(data) {
+            const daysData = {};
+
+            for (const row of data) {
+                const { Date: date, Day: day, Time: time } = row;
+                if (!daysData[date]) {
+                    daysData[date] = { date, day, times: [] };
+                }
+                daysData[date].times.push(time);
+            }
+          
+            const incomingChatLi = createChatLi('Available Dates are', 'incoming');
+            chatbox.appendChild(incomingChatLi);
+          
+            const creatediv = document.createElement('div');
+            creatediv.className = 'show-info';
+          
+            for (const [date, dateData] of Object.entries(daysData)) {
+              const { day } = dateData;
+          
+              const date_button = document.createElement('button');
+              date_button.className = 'show-info-btn';
+              date_button.textContent = date;
+          
+              date_button.onclick = function () {
+                const clickedDate = date_button.textContent; // Get the date from the clicked button
+          
+                const DateObj = new Date(clickedDate);
+                datehandler(DateObj);
+                console.log(clickedDate);
+          
+                setTimeout(() => {
+                  getAvailableTimesByDate(dateData, clickedDate);
+                }, 800);
+              };
+          
+              const buttonDate = document.createElement('p');
+              buttonDate.className = 'class-info';
+              buttonDate.appendChild(date_button);
+              creatediv.appendChild(buttonDate);
+              chatbox.appendChild(creatediv);
+            }
+          }
