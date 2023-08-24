@@ -473,7 +473,7 @@ function datehandler(option) {
 
 function CorrectInfo() {
     setTimeout(() => {
-        const incomingChatLi = createChatLi('We need to ask for few details to go ahead for confirming your appointment', 'incoming');
+        const incomingChatLi = createChatLi('Is everthing in here is correct?', 'incoming');
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
 
@@ -512,9 +512,6 @@ function CorrectInfo() {
                         console.error('Error communicating with /data_collection_details:', error);
                     });
 
-                    setTimeout(() => {
-                        CommercialFormFillingData();
-                    }, 1000);
                 } else if (item.text === "I need to change") {
                     setTimeout(() => {
                         CommercialFormFillingData();
