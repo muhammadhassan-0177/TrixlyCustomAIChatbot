@@ -83,13 +83,11 @@ function createnewButtons() {
 
                 }, 1500)
 
-
-
   // This should now call AskAnything() as expected
             } else if (selectedStateOption === "Schedule an Estimate") {
                setTimeout(() => {
                 DemoBooking();
-               }, 1500)
+               }, 1000)
             } else {
                 console.log("Error");
             }
@@ -122,28 +120,67 @@ function AskAnything() {
     });
 }
 
+// const takeuserresponse = () => {
+//     return new Promise((resolve) => {
+//         const userInput = document.querySelector(".chat-input textarea");
+
+//         const handleEnterKey = (event) => {
+//             if (event.key === "Enter" && !event.shiftKey) {
+//                 event.preventDefault();
+
+//                 const userMessage = userInput.value.trim();
+//                 if (userMessage) {
+//                     userInput.removeEventListener("keydown", handleEnterKey);
+//                     resolve(userMessage);
+
+//                     // Clear the input area after getting the response and resolving the promise
+                    
+//                     userInput.value = "";
+//                 }
+//             }
+//         };
+//         userInput.addEventListener("keydown", handleEnterKey);
+//     });
+// }
+
+
 const takeuserresponse = () => {
     return new Promise((resolve) => {
         const userInput = document.querySelector(".chat-input textarea");
+        const sendChatBtn = document.getElementById("send-btn");
 
         const handleEnterKey = (event) => {
             if (event.key === "Enter" && !event.shiftKey) {
                 event.preventDefault();
+                handleUserResponse();
+            }
+        };
 
-                const userMessage = userInput.value.trim();
-                if (userMessage) {
-                    userInput.removeEventListener("keydown", handleEnterKey);
-                    resolve(userMessage);
+        const handleSendClick = () => {
+            handleUserResponse();
+        };
 
-                    // Clear the input area after getting the response and resolving the promise
-                    userInput.value = "";
-                }
+        const handleUserResponse = () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                userInput.removeEventListener("keydown", handleEnterKey);
+                sendChatBtn.removeEventListener("click", handleSendClick);
+                resolve(userMessage);
+
+                // Clear the input area after getting the response and resolving the promise
+                userInput.value = "";
             }
         };
 
         userInput.addEventListener("keydown", handleEnterKey);
+        sendChatBtn.addEventListener("click", handleSendClick);
     });
-}
+};
+
+// Setup event listener for "send" button click
+//const sendChatBtn = document.getElementById("send-btn");
+
+
 
 // Function to send the user response to the server
 const sendUserResponseToServer = async (response) => {
@@ -444,7 +481,7 @@ const ReadFileadnCreate = async () => {
 
 
 //Handling the selected date variable
-function datehandler(option) {
+function datehandler(option) {CorrectInfo
 
     const optionText = `The selected Date is: ${option}`;
     chatbox.appendChild(createChatLi(optionText, 'outgoing')); // Show as outgoing message
@@ -473,7 +510,7 @@ function datehandler(option) {
 
 function CorrectInfo() {
     setTimeout(() => {
-        const incomingChatLi = createChatLi('Is everthing in here is correct?', 'incoming');
+        const incomingChatLi = createChatLi('We need to ask for few details to go ahead for confirming your appointment', 'incoming');
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
 
@@ -512,6 +549,9 @@ function CorrectInfo() {
                         console.error('Error communicating with /data_collection_details:', error);
                     });
 
+                    setTimeout(() => {
+                        CommercialFormFillingData();
+                    }, 1000);
                 } else if (item.text === "I need to change") {
                     setTimeout(() => {
                         CommercialFormFillingData();
@@ -965,28 +1005,57 @@ async function servicesRequired() {
 
 
   
-  const getUserResponse = () => {
+const getUserResponse = () => {
     return new Promise((resolve) => {
-      const userInput = document.querySelector(".chat-input textarea");
-  
-      const handleEnterKey = (event) => {
-        if (event.key === "Enter" && !event.shiftKey) {
-          event.preventDefault();
-  
-          const userMessage = userInput.value.trim();
-          if (userMessage) {
-            userInput.removeEventListener("keydown", handleEnterKey);
-            resolve(userMessage);
-  
-            // Clear the input area after getting the response and resolving the promise
-            userInput.value = "";
-          }
-        }
-      };
-  
-      userInput.addEventListener("keydown", handleEnterKey);
+        const userInput = document.querySelector(".chat-input textarea");
+        const sendChatBtn = document.getElementById("send-btn");
+
+        const handleEnterKey = (event) => {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+
+                const userMessage = userInput.value.trim();
+                if (userMessage) {
+                    userInput.removeEventListener("keydown", handleEnterKey);
+                    resolve(userMessage);
+
+                    // Clear the input area after getting the response and resolving the promise
+                    userInput.value = "";
+                }
+            }
+        };
+
+        const handleSendClick = () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                sendChatBtn.removeEventListener("click", handleSendClick);
+                resolve(userMessage);
+
+                // Clear the input area after getting the response and resolving the promise
+                userInput.value = "";
+            }
+        };
+
+        userInput.addEventListener("keydown", handleEnterKey);
+        sendChatBtn.addEventListener("click", handleSendClick);
     });
-  };
+};
+
+
+// sendChatBtn.addEventListener("click", () => {
+//     getUserResponse()
+//         .then(userResponse => {
+//             // Do something with the user's response, e.g., send it to a chat server
+//             console.log("User response:", userResponse);
+//         })
+//         .catch(error => {
+//             // Handle any errors that might occur
+//             console.error("Error:", error);
+//         });
+// });
+
+
+
   
 
   
@@ -1007,7 +1076,17 @@ const submitLeadGenerationForm = () => {
 closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
 
-
+// sendChatBtn.addEventListener("click", () => {
+//     takeuserresponse()
+//         .then(userResponse => {
+//             // Do something with the user's response, e.g., send it to a chat server
+//             console.log("User response:", userResponse);
+//         })
+//         .catch(error => {
+//             // Handle any errors that might occur
+//             console.error("Error:", error);
+//         });
+// });
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1518,82 +1597,6 @@ const handleResidentialFormData = async () => {
         console.error(error);
     }
 };
-
-
-
-
-const residential_leads = [
-    "Please enter your First Name",
-    "Please provide us your last name",
-    "Please state the name of Decision Maker",
-    "Please state the phone number of decision maker",
-    "Can you provide decision maker email address",
-    "What type of Job is this?",
-    "Please provide us your email",
-    "Can we have your cell phone please?",
-    "Home phone number",
-    "Please provide us your street address",
-    "Your City?",
-    "Which state you are in",
-    "Please share your zip code",
-    "Where you heard about us?",
-    "Please enter project description",
-    "Please provide us the coupon code if you have"
-];
-
-let question_Index = 0; // Initialize the question index
-
-// ... (Other code remains unchanged)
-
-const Residential_lead_FormData = async () => {
-    if (questionIndex < lead_generation.length) {
-      const question = lead_generation[questionIndex];
-  
-      const incomingChatLi = createChatLi(question, 'incoming');
-  
-      if (question === "What type of Job is this?") {
-        chatbox.appendChild(incomingChatLi); 
-        await ResJobRequirement(); 
-
-      }
-
-      else if (question === "Which state you are in") {
-        chatbox.appendChild(incomingChatLi); 
-
-
-    } else if (question === "Where you heard about us?") {
-        chatbox.appendChild(incomingChatLi); 
-        await askWhereHearAboutUs();
-
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-  
-        const userResponse = await getUserResponse();
-        console.log("User's Response:", userResponse);
-  
-        chatbox.appendChild(createChatLi(userResponse, 'outgoing')); // Display the user's response as an outgoing message
-        chatbox.scrollTo(0, chatbox.scrollHeight);ResJobRequirement
-
-  
-        questionIndex++;
-        handleFormData(); // Continue with the regular form
-      } else {
-        chatbox.appendChild(incomingChatLi); 
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-  
-        const userResponse = await getUserResponse();
-        console.log("User's Response:", userResponse);
-  
-        const userResponseLi = createChatLi(userResponse, 'outgoing');
-        chatbox.appendChild(userResponseLi);
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-  
-        questionIndex++;
-        Residential_lead_FormData(); // Continue with the regular form
-      }
-    } else {
-      submitLeadGenerationForm();
-    }
-  };
 
 
 
@@ -2157,14 +2160,14 @@ chatInput.addEventListener("input", () => {
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
-chatInput.addEventListener("keydown", (e) => {
-    // If Enter key is pressed without Shift key and the window 
-    // width is greater than 800px, handle the chat
-    if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-        e.preventDefault();
-        getUserResponse();
-    }
-});
+// chatInput.addEventListener("keydown", (e) => {
+//     // If Enter key is pressed without Shift key and the window 
+//     // width is greater than 800px, handle the chat
+//     if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+//         e.preventDefault();
+//         getUserResponse();
+//     }
+// });
 
 
 
@@ -2330,3 +2333,41 @@ async function ResidentialBookingLeads() {
     await DecisionMakerEmail();
     await ResJobRequirement();
 }
+
+
+
+
+
+const handleinputchatsend = () => {
+    return new Promise((resolve) => {
+        const userInput = document.querySelector(".chat-input textarea");
+
+        const handleSendClick = () => {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                sendChatBtn.removeEventListener("click", handleSendClick);
+                resolve(userMessage);
+
+                // Clear the input area after getting the response and resolving the promise
+                userInput.value = "";
+            }
+        };
+
+        sendChatBtn.addEventListener("click", handleSendClick);
+    });
+};
+
+// sendChatBtn.addEventListener("click", () => {
+//     handleinputchatsend()
+//         .then(userResponse => {
+//             // Do something with the user's response, e.g., send it to a chat server
+//             console.log("User response:", userResponse);
+//         })
+//         .catch(error => {
+//             // Handle any errors that might occur
+//             console.error("Error:", error);
+//         });
+// });
+
+
+
