@@ -6,3 +6,4 @@ webdriver_manager
 requests
 beautifulsoup4
 pandas
+gunicorn
