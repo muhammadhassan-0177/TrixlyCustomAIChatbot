@@ -186,16 +186,16 @@ def selecting_date_shifting_res(driver, dayinput, dateinput, timeinput):
 
 def serviceSelection(driver, checkboxvalue):
     try:
-        checkboxvalue_Int = WebDriverWait(driver, 15).until(
+        checkboxvalue_Int = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[7]/div[2]/div[1]/input"))
         )
-        checkboxvalue_ext = WebDriverWait(driver, 15).until(
+        checkboxvalue_ext = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[7]/div[2]/div[2]/input"))
         )
-        checkboxvalue_wod = WebDriverWait(driver, 15).until(
+        checkboxvalue_wod = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[7]/div[2]/div[3]/input"))
         )
-        checkboxvalue_oth = WebDriverWait(driver, 15).until(
+        checkboxvalue_oth = WebDriverWait(driver, 1500).until(
             EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[7]/div[2]/div[4]/input"))
         )
         if checkboxvalue == "Interior Painting":
@@ -223,7 +223,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
         actions_chains = ActionChains(driver)
 
         try:
-            firstname = WebDriverWait(driver, 15).until(
+            firstname = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[2]/div[2]/input"))
             )
             actions_chains.click(firstname).send_keys(FirstName).perform()
@@ -234,7 +234,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            lastname = WebDriverWait(driver, 15).until(
+            lastname = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[3]/div[2]/input"))
             )
             actions_chains.click(lastname).send_keys(LastNem).perform()
@@ -245,7 +245,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
 
         try:
-            spousename = WebDriverWait(driver, 15).until(
+            spousename = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[4]/div[2]/input"))
             )
             actions_chains.click(spousename).send_keys(spouse).perform()
@@ -256,7 +256,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            spousenum = WebDriverWait(driver, 15).until(
+            spousenum = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[5]/div[2]/div/input[2]"))
             )
             actions_chains.click(spousenum).send_keys(Spouse_num).perform()
@@ -267,7 +267,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            spousemail = WebDriverWait(driver, 15).until(
+            spousemail = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[6]/div[2]/input"))
             )
             actions_chains.click(spousemail).send_keys(spouse_addr).perform()
@@ -286,7 +286,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            email = WebDriverWait(driver, 15).until(
+            email = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[8]/div[2]/input"))
             )
             actions_chains.click(email).send_keys(email_add).perform()
@@ -296,7 +296,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            phonenum = WebDriverWait(driver, 15).until(
+            phonenum = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[9]/div[2]/div[1]/input[2]"))
             )
             actions_chains.click(phonenum).send_keys(cell_phone).perform()
@@ -307,7 +307,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            cell_phone = WebDriverWait(driver, 15).until(
+            cell_phone = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[10]/div[2]/div/input[2]"))
             )
             actions_chains.click(cell_phone).send_keys(home_phone).perform()
@@ -319,7 +319,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            st_address = WebDriverWait(driver, 15).until(
+            st_address = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[11]/div[2]/input"))
             )
             actions_chains.click(st_address).send_keys(Str_addres).perform()
@@ -331,7 +331,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            city_input = WebDriverWait(driver, 15).until(
+            city_input = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[12]/div[2]/input"))
             )
             actions_chains.click(city_input).send_keys(city).perform()
@@ -343,10 +343,10 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            kansas_radio_button = WebDriverWait(driver, 15).until(
+            kansas_radio_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[13]/div[2]/div[1]/input"))
             )
-            missouri_radio_button = WebDriverWait(driver, 15).until(
+            missouri_radio_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[13]/div[2]/div[2]/input"))
             )
 
@@ -363,7 +363,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            zipcode_input = WebDriverWait(driver, 15).until(
+            zipcode_input = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[14]/div[2]/input"))
             )
             actions_chains.click(zipcode_input).send_keys(zipcode).perform()
@@ -376,8 +376,8 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            challenge_select_element = WebDriverWait(driver, 15).until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[15]/div[2]/select"))
+            challenge_select_element = WebDriverWait(driver, 1500).until(
+                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[1500]/div[2]/select"))
             )
             challenge_select = Select(challenge_select_element)
             challenge_select.select_by_visible_text(channel)
@@ -389,7 +389,7 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
 
         try:
 
-            project_description_textarea = WebDriverWait(driver, 15).until(
+            project_description_textarea = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[16]/div[2]/textarea"))
             )
             actions_chains.click(project_description_textarea).send_keys(Description).perform()
@@ -403,13 +403,13 @@ def Residential_Form(driver, FirstName, LastNem, spouse, Spouse_num, spouse_addr
             #Submit Button and Form
 
         try:
-            submit_button = WebDriverWait(driver, 15).until(
+            submit_button = WebDriverWait(driver, 1500).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[3]/div[3]/form/div[20]/div[2]/button[1]"))
             )
             actions_chains.click(submit_button).perform()
             print("Button Click Attempted")
 
-            WebDriverWait(driver, 15).until(EC.url_changes(driver.current_url))  # Wait for URL change
+            WebDriverWait(driver, 1500).until(EC.url_changes(driver.current_url))  # Wait for URL change
             print("Button Click Successful. URL changed:", driver.current_url)
         except ElementClickInterceptedException as e:
             print(driver.current_url)
