@@ -25,7 +25,7 @@ import openai
 load_dotenv()
 
 # Access environment variables
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 retrieve_response = openai.FineTune.retrieve(id="ft-6hA7DobBEheC4iFfEfH4ZBTF")
