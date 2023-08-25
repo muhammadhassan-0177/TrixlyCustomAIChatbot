@@ -147,7 +147,7 @@ header h2 {
 }
 .chat-input textarea {
   height: 55px;
-  width: 100%;
+  width: 85%;
   border: none;
   outline: none;
   resize: none;
@@ -162,7 +162,6 @@ header h2 {
   height: 55px;
   display: flex;
   align-items: center;
-  visibility: hidden;
   font-size: 1.35rem;
 }
 .chat-input textarea:valid ~ span {
