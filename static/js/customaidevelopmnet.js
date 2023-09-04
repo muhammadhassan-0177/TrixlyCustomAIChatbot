@@ -191,7 +191,7 @@ const UserResponse = () => {
 
 
 function WelcomeMessage() {
-    const Query = "Welcome to Mission Painting, I am here to help you!";
+    const Query = "Welcome to Trixly! I am here to help you!";
     chatbox.appendChild(createChatLi(Query, "incoming"));
     chatbox.scrollTo(0, chatbox.scrollHeight);
     takeuserresponse().then(response => {
