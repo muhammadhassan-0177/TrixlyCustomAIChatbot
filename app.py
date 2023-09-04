@@ -28,7 +28,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-retrieve_response = openai.FineTune.retrieve(id="ft-6hA7DobBEheC4iFfEfH4ZBTF")
+retrieve_response = openai.FineTune.retrieve(id="ft-4xstIXhZgaMTvrUqMMxgd7Ki")
 retrieve_response
 
 fine_tuned_model = retrieve_response.fine_tuned_model
@@ -50,7 +50,15 @@ app.secret_key = "016998ef5353a852abb1c47318fa804979509dfdbaf9a2e901599452dec254
 
 
 
+
+# Initialize a global dictionary to store cached responses
+cached_responses = {}
+
 def generate_response(prompt, fine_tuned_model):
+    # Check if a response is already cached for the prompt
+    if prompt in cached_responses:
+        return cached_responses[prompt]
+
     try:
         response = openai.Completion.create(
             model=fine_tuned_model,
@@ -58,8 +66,12 @@ def generate_response(prompt, fine_tuned_model):
             max_tokens=100,  # Adjust the value as needed
             temperature=0.7  # Adjust the value as needed
         )
+
+        generated_text = response['choices'][0]['text']
         
-        generated_text = response['choices'][0]['text'].strip()
+        # Cache the response for the prompt
+        cached_responses[prompt] = generated_text
+        
         return generated_text
     except Exception as e:
         print("Error:", e)
@@ -84,6 +96,7 @@ def chatbot_response():
         response = text
         print(response)
         return jsonify({'response': response})
+
 
 
 
@@ -599,6 +612,3 @@ def lead_generation_data_commercial():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
